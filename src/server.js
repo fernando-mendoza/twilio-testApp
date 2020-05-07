@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const exphbs = require("express-handlebars");
+const morgan = require("morgan");
 
 //settings
 app.set("port", process.env.PORT || 3000);
@@ -18,6 +19,9 @@ app.engine(
 app.set("view engine", ".hbs");
 
 //middlewares
+app.use(morgan("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 //routes
 app.use(require("./routes/indexRoutes"));
