@@ -27,5 +27,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(require("./routes/indexRoutes"));
 
 //static files
+app.use(express.static(path.join(__dirname, "public")));
 
 module.exports = app;
